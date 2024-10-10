@@ -1,14 +1,14 @@
-from seleniumwire import webdriver
+from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import json
 
-def handler(event, context):
-    proxy = event.get("proxy")
+def handler(event = None, context = None):
 
-    url = "https://www.whatismyip.com/"
+
+    url = "https://flag.dol.gov/case-status-search"
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = "/opt/chrome/chrome"
@@ -22,17 +22,6 @@ def handler(event, context):
     chrome_options.add_argument("window-size=2560x1440")
     chrome_options.add_argument("--user-data-dir=/tmp/chrome-user-data")
     chrome_options.add_argument("--remote-debugging-port=9222")
-
-    options = {}
-
-    if proxy is not None:
-        options = {
-            "proxy": {
-                "http": proxy,
-                "https": proxy,
-                'no_proxy': 'localhost,127.0.0.1'
-            }
-        }
 
     service = Service(executable_path="/opt/chromedriver")
 
