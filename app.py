@@ -25,7 +25,7 @@ def handler(event = None, context = None):
 
     service = Service(executable_path="/opt/chromedriver")
 
-    driver = webdriver.Chrome(service=service, options=chrome_options, seleniumwire_options=options)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
 
     driver.get(url)
     title = driver.title
