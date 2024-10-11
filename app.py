@@ -30,8 +30,8 @@ def handler(event = None, context = None):
     driver.get(url)
     title = driver.title
 
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".the-ipv4")))
-    ip = driver.find_element(By.CSS_SELECTOR, ".the-ipv4").text
+    # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".the-ipv4")))
+    # ip = driver.find_element(By.CSS_SELECTOR, ".the-ipv4").text
 
     driver.quit()
 
@@ -40,7 +40,7 @@ def handler(event = None, context = None):
         "body": json.dumps(
             {
                 "title": title,
-                "ip": ip,
+                # "ip": ip,
             }
         ),
     }
